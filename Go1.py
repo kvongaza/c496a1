@@ -44,7 +44,10 @@ def run():
 def score():
     """
     score the game after finish.
+<<<<<<< HEAD
     Test this change.
+=======
+>>>>>>> 4d9a6ad774ee9e93b0472be59f64978bad85cb70
     """
 
 
