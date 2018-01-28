@@ -41,6 +41,7 @@ def run():
     con = GtpConnectionGo1(Go1(), board)
     con.start_connection()
 
+# Call scoring function after game ends.
 def score():
     """
     score the game after finish.
