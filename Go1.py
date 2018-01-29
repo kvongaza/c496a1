@@ -47,7 +47,7 @@ class Go1():
             for n in [e-1, e+1, e-board.NS, e+board.NS]:
                 n_colors.append(scratch_board[n])
             if 1 in n_colors:
-                scratch_board[e] == 9
+                scratch_board[e] = 9
             if 2 in n_colors:
                 if scratch_board[e] == 9:
                     scratch_board[e] = 7
@@ -56,9 +56,9 @@ class Go1():
         score = 0
         # count territory
         for i in scratch_board:
-            if scratch_board[i] == 9: 
+            if i == 9: 
                 score += 1
-            elif scratch_board[i] == 8:
+            elif i == 8:
                 score -= 1
         # construct return message
         if score < 0:
