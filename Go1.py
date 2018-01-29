@@ -7,7 +7,7 @@
 
 # Set up relative path for util; sys.path[0] is directory of current program
 import os, sys
-utilpath = sys.path[0] + "/../util/"
+utilpath = sys.path[0] + "/../cmput_496/util"
 sys.path.append(utilpath)
 
 from gtp_connection_go1 import GtpConnectionGo1
@@ -42,11 +42,40 @@ def run():
     con.start_connection()
 
 def score():
-    """
-    score the game after finish.
-    Test this change.
-    """
-
+	empties = self.board.get_empty_positions()
+	scratch_board = self.board.copy()
+	# the scratch board entries have 4 states
+	# 9 -> black territory
+	# 8 -> white territory
+	# 7 -> neutral territory
+	# 0 -> undetermined territory
+	# evaluate territory
+	for e in empties:
+		n_colors = []
+		# does this part work? i have no fuckin idea
+		for n in self.board._neighbours(e):
+			n_colors.append(scratch_board[n])
+		if 1 in n_colors:
+			scratch_board[e] == 9
+		if 2 in n_colors:
+			if scratch_board[e] == 9:
+				scratch_board[e] = 7
+			else:
+				scratch_board[e] = 8
+	score_b = 0
+	# count territory
+	for i in scratch_board:
+		if scratch_board[i] == 9 
+			score += 1
+		elif scratch_board[i] == 8:
+			score -= 1
+	# construct return message
+	if score < 0:
+		return 'W+' + str(score)
+	elif score > 0:
+		return 'B+' + str(score)
+	else:
+		return '0'
 
 if __name__=='__main__':
     run()
