@@ -43,7 +43,6 @@ class Go1():
         # evaluate territory
         for e in empties:
             n_colors = []
-            # does this part work? i have no fuckin idea
             for n in [e-1, e+1, e-board.NS, e+board.NS]:
                 n_colors.append(scratch_board[n])
             if 1 in n_colors:
@@ -53,6 +52,20 @@ class Go1():
                     scratch_board[e] = 7
                 else:
                     scratch_board[e] = 8
+        # spread through empty territory
+        while 0 in scratch_board:
+            for i in range(len(scratch_board)):
+                if scratch_board[i] == 0:
+                    for n in [i-1, i+1, i-board.NS, i+board.NS]:
+                        if scratch_board[n] == 9:
+                            scratch_board[i] = 9
+                        if scratch_board[n] == 8:
+                            if scratch_board[i] == 9:
+                                scratch_board[i] = 7
+                            else:
+                                scratch_board[i] = 8
+                        if scratch_board[n] == 7:
+                            scratch_board[i] = 7
         score = 0
         # count territory
         for i in scratch_board:
