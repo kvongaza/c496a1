@@ -34,3 +34,6 @@ class GtpConnectionGo1(gtp_connection.GtpConnection):
     def hello_cmd(self, args):
         """ Dummy Hello Command """
         self.respond("Hello! " + self.go_engine.name)
+	
+	def score(self, args):
+		self.respond(self.go_engine.score())
