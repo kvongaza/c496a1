@@ -29,11 +29,12 @@ class GtpConnectionGo1(gtp_connection.GtpConnection):
         """
         gtp_connection.GtpConnection.__init__(self, go_engine, board, outfile, debug_mode)
         self.commands["hello"] = self.hello_cmd
+        self.commands["score"] = self.score
     
 
     def hello_cmd(self, args):
         """ Dummy Hello Command """
         self.respond("Hello! " + self.go_engine.name)
-	
-	def score(self, args):
-		self.respond(self.go_engine.score())
+    
+    def score(self, args):
+        self.respond(self.go_engine.score(self.board))
