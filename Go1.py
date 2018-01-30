@@ -67,11 +67,13 @@ class Go1():
                         if scratch_board[n] == 7:
                             scratch_board[i] = 7
         score = -connection.komi
+        with open('log.txt', 'a') as f:
+            f.write(str(scratch_board))
         # count territory
         for i in scratch_board:
-            if i == 9: 
+            if (i == 9) or (i == 1): 
                 score += 1
-            elif i == 8:
+            elif (i == 8) or (i == 2):
                 score -= 1
         # construct return message
         if score < 0:
