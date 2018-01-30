@@ -75,9 +75,9 @@ class Go1():
                 score -= 1
         # construct return message
         if score < 0:
-            return 'W+' + str(abs(score))
+            return 'W\+' + str(abs(score))
         elif score > 0:
-            return 'B+' + str(score)
+            return 'B\+' + str(score)
         else:
             return '0'
 
