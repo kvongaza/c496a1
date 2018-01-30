@@ -32,7 +32,7 @@ class Go1():
     def get_move(self,board, color):
         return GoBoardUtil.generate_random_move(board,color,True)
 
-    def score(self, board):
+    def score(self, board, connection):
         empties = board.get_empty_positions(1)
         scratch_board = board.copy().board
         # the scratch board entries have 4 states
@@ -66,7 +66,7 @@ class Go1():
                                 scratch_board[i] = 8
                         if scratch_board[n] == 7:
                             scratch_board[i] = 7
-        score = 0
+        score = -connection.komi
         # count territory
         for i in scratch_board:
             if i == 9: 

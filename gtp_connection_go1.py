@@ -37,4 +37,4 @@ class GtpConnectionGo1(gtp_connection.GtpConnection):
         self.respond("Hello! " + self.go_engine.name)
     
     def score(self, args):
-        self.respond(self.go_engine.score(self.board))
+        self.respond(self.go_engine.score(self.board, self))
